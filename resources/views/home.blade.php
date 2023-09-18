@@ -84,13 +84,11 @@
                     @endif
                 </td>
                 <td>
-                            <!-- Add other column data as needed -->
             </tr>
             @endforeach
         </tbody>
     </table>
 
-    <!-- Pagination -->
     <div class="d-flex justify-content-center">
         {{ $cryptos->links() }}
     </div>

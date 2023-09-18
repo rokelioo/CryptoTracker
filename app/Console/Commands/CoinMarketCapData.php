@@ -48,7 +48,6 @@ class CoinMarketCapData extends Command
             'convert' => 'USD'
           ];
 
-        // Obtain data with GET request
         $response = $this->client->get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', [
             'query' => $parameters,
             'headers' => [

@@ -105,7 +105,7 @@ function fetchDataAndUpdateChart(cryptoId, timeframe) {
   if (!response.ok) {
     throw new Error('Network response was not ok');
   }
-  return response.json(); // directly return parsed JSON
+  return response.json();
 })
 .then(data => {
   chart.updateSeries([{
