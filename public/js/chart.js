@@ -1,4 +1,4 @@
-var chart; // Make it globally accessible.
+var chart;
 document.addEventListener("DOMContentLoaded", function(event) {
     var chartData = window.chartData || [];
 
@@ -108,6 +108,7 @@ function fetchDataAndUpdateChart(cryptoId, timeframe) {
   return response.json();
 })
 .then(data => {
+    console.log(data);
   chart.updateSeries([{
     name: data.cryptoName,
     data: data.chartData

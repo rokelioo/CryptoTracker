@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CryptoController;
+use App\Http\Controllers\CryptoCurrencyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,7 @@ use App\Http\Controllers\CryptoController;
 |
 */
 
-Route::get('/', [CryptoController::class, 'index'])->name('home');
-Route::get('/{crypto}/{timeframe?}', [CryptoController::class, 'show'])->name('crypto');
+Route::get('/', [CryptoCurrencyController::class, 'index'])->name('home');
+Route::get('/search', [CryptoCurrencyController::class, 'search'])->name('search');
+Route::get('/{crypto}/{timeframe?}', [CryptoCurrencyController::class, 'show'])->name('crypto');
 

@@ -9,22 +9,22 @@
     <script src="{{ asset('js/chart.js') }}"></script>
 </head>
 <body>
-<input type="hidden" id="cryptoId" value="{{ $crypto->Pk_ID }}">
+<input type="hidden" id="cryptoId" value="{{ $crypto->id }}">
 <div class="container-fluid">
     <div class="row">
         <div class="col-2">
             <div>{{$crypto->name}}</div>
             <h1>
-                    @if($crypto->price_usd < 0.1)
-                        ${{ number_format($crypto->price_usd, 8) }}
-                    @elseif($crypto->price_usd < 1)
-                        ${{ number_format($crypto->price_usd, 4) }}
+                    @if($crypto->price < 0.1)
+                        ${{ number_format($crypto->price, 8) }}
+                    @elseif($crypto->price < 1)
+                        ${{ number_format($crypto->price, 4) }}
                     @else
-                        ${{ number_format($crypto->price_usd, 2) }}
+                        ${{ number_format($crypto->price, 2) }}
                     @endif
             </h1>
-            <div>Market cap: ${{number_format($crypto->market_cap_usd)}}</div>
-            <div>Volume(24h): ${{number_format($crypto->volume_usd_24h)}}</div>
+            <div>Market cap: ${{number_format($crypto->market_cap)}}</div>
+            <div>Volume(24h): ${{number_format($crypto->volume_24h)}}</div>
             <div>Circulating supply: {{number_format($crypto->circulating_supply)}} {{$crypto->symbol}}</div>
             <div>Total supply: {{number_format($crypto->total_supply)}} {{$crypto->symbol}}</div>
             <div>Max supply: {{number_format($crypto->max_supply)}} {{$crypto->symbol}}</div>

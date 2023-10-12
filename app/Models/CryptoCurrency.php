@@ -3,22 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class CoinInfo extends Model
+class CryptoCurrency extends Model
 {
-    protected $table = 'coininfo'; 
-
-    protected $primaryKey = 'Pk_ID'; 
-
-    public $timestamps = false;
-
     protected $fillable = [
         'name',
         'symbol',
+        "slug",
         'rank',
-        'price_usd',
-        'market_cap_usd',
-        'volume_usd_24h',
+        'price',
+        'volume_24h',
+        'market_cap',
         'circulating_supply',
         'total_supply',
         'max_supply',
@@ -28,8 +24,8 @@ class CoinInfo extends Model
         'last_updated'
     ];
 
-    public function coinHistories()
+    public function cryptoHistory() :HasMany
     {
-        return $this->hasMany(CoinHistory::class, 'Fk_coininfo', 'Pk_ID');
+        return $this->hasMany(CryptoHistory::class);
     }
 }

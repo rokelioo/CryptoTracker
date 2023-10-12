@@ -10,17 +10,24 @@
 
 <div class="container mt-4">
     <h1 class="mb-4">Cryptocurrencies</h1>
-    
+    @if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <!-- Search Form -->
-    <form method="GET" action="{{ route('home') }}" class="mb-4">
+    <form method="GET" action="{{ route('search') }}" class="mb-4">
         <div class="input-group">
-            <input type="text" name="search" class="form-control" placeholder="Search by name..." value="{{ $searchTerm }}">
+            <input type="text" name="search" class="form-control" placeholder="Search by name..." value="{{ $searchTerm ?? '' }}">
             <div class="input-group-append">
                 <button class="btn btn-primary" type="submit">Search</button>
             </div>
         </div>
     </form>
-
     <!-- Cryptos Table -->
     <table class="table table-hover">
         <thead class="thead-dark">
@@ -41,7 +48,7 @@
             @foreach($cryptos as $crypto)
             <tr>
                 <td>{{ $crypto->rank }}</td>
-                <td><a href="{{ route('crypto', $crypto->Pk_ID) }}">{{ $crypto->name }}</a></td>
+                <td><a href="{{ route('crypto', $crypto->id) }}">{{ $crypto->name }}</a></td>
                 <td>{{ $crypto->symbol }}</td>
                 <td>
                     @if($crypto->price_usd < 0.1)
